@@ -1,0 +1,53 @@
+.navbar{
+    margin:0px;
+    padding:0px;
+    nav{
+        background-color: teal;
+        width: 100%;
+        padding:15px 0px;
+
+        ul{
+            margin:0px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap:20px;
+            font-size: 32px;
+
+            li{
+                display: inline;
+                border: 1px solid #ececec;
+                padding:5px;
+                border-radius: 5px;
+                .searchbar{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding:5px;
+
+                    input{
+                        padding: 5px;
+                    }
+
+                    button{
+                        padding:6px;
+                        color: skyblue;
+                        background-color: darkblue;
+                        border: none;
+                        cursor: pointer;
+                    }
+                }
+
+                a{
+                    text-decoration: none;
+                    color:inherit;
+
+                    &:hover{
+                        border-bottom: 1px solid #ececec;
+                    }
+                }
+            }
+        }
+    }
+}
