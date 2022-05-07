@@ -1,14 +1,20 @@
 import React, { FormEvent, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.scss";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearch(e.currentTarget.value);
   };
+
+  const handleSearch=(e: FormEvent<HTMLButtonElement>)=>{
+      e.preventDefault();
+      navigate(`/search/${search}`);
+  }
   return (
     <div className="navbar">
       <nav>
@@ -21,11 +27,11 @@ const Navbar = () => {
                 type="text"
                 name="searcch"
                 id="search"
-                placeholder="search item"
+                placeholder="search...e.g Skywalker"
                 defaultValue={search}
                 onChange={handleChange}
               />
-              <button>Search</button>
+              <button onClick={handleSearch}>Search</button>
             </div>
           </li>
           <li><NavLink to={'/people'}>Starwars People</NavLink></li>

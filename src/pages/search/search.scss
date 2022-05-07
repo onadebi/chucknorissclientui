@@ -1,0 +1,22 @@
+.search{
+    .searchContainer{
+
+
+        ul{
+            list-style: none;
+            li.searchList{
+                padding: 8px;
+                &:hover{
+                    background-color: teal;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+
+                .metadata{
+                    font-style: italic;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

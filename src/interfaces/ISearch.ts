@@ -6,7 +6,7 @@ export interface SearchContent {
 }
 
 declare module ISearch {
-    interface Search extends GenResponse<SearchContent> {}
+    interface Search extends GenResponse<SearchContent[]> {}
 }
 
 export default ISearch;
