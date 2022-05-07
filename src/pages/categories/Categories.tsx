@@ -6,6 +6,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([""]);
   const [jokeCategory, setJokeCategory] = useState("");
   const [randomJoke, setRandomJoke] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     agent.ChuckCall.list().then((data) => {
@@ -17,11 +18,13 @@ const Categories = () => {
 
   const handleJokeSelection = async (e: FormEvent<HTMLSpanElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const selectedCategory = e.currentTarget.textContent;
     setJokeCategory(selectedCategory!);
     const result = await agent.ChuckCall.random(jokeCategory);
     if (result.isSuccess) {
       setRandomJoke(result.data.value);
+      setIsLoading(false);
     } else {
       setRandomJoke("Oops! No joke for the selected category.");
     }
@@ -35,13 +38,17 @@ const Categories = () => {
           <ul>
             {categories &&
               categories.map((cat, index) => (
-                <li key={index}>
-                  <span onClick={(e) => handleJokeSelection(e)}>{cat}</span>
+                <li key={index} onClick={(e) => handleJokeSelection(e)}>
+                  <span>{cat}</span>
                 </li>
               ))}
           </ul>
         </div>
-        <div className="contentSection">{jokeCategory && randomJoke}</div>
+        <div className="contentSection">
+        {isLoading ? <span>Loading...</span>:(
+          (jokeCategory && randomJoke)
+        )}
+        </div>
       </div>
     </div>
   );
