@@ -26,6 +26,8 @@ const Categories = () => {
       setRandomJoke("Oops! No joke for the selected category.");
     }
   };
+
+
   return (
     <div className="categories">
       <div className="catgoriesContainer">
@@ -33,8 +35,8 @@ const Categories = () => {
           <ul>
             {categories &&
               categories.map((cat, index) => (
-                <li key={index} onClick={handleJokeSelection}>
-                  <span>{cat}</span>
+                <li key={index}>
+                  <span onClick={(e) => handleJokeSelection(e)}>{cat}</span>
                 </li>
               ))}
           </ul>
