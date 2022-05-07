@@ -21,7 +21,7 @@ const Categories = () => {
     setIsLoading(true);
     const selectedCategory = e.currentTarget.textContent;
     setJokeCategory(selectedCategory!);
-    const result = await agent.ChuckCall.random(jokeCategory);
+    const result = await agent.ChuckCall.random(selectedCategory!);
     if (result.isSuccess) {
       setRandomJoke(result.data.value);
       setIsLoading(false);
